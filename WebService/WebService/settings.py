@@ -67,6 +67,8 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'WebService.wsgi.application'
 
 

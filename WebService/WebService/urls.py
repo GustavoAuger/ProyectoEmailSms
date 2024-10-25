@@ -14,9 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-# Proyecto/urls.py (archivo principal del proyecto)
-from django.urls import include, path  # Importa `include` y `path`
+from django.urls import path
+from . import views  # Asegúrate de que esto importa `views.py`
 
 urlpatterns = [
-    path('', include('web.urls')),  # Enlaza las rutas de `web/urls.py` en la raíz (`/`)
+    path('', views.index, name='index'),  # Llama a la función `index` desde `views.py`
 ]
