@@ -1,99 +1,59 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Account</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión / Registrarse</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'myapp/css/styles.css' %}">
 </head>
-
 <body>
+    <div class="container mt-5">
+        <h2 class="text-center">Iniciar Sesión</h2>
+        <form id="login-form" class="mb-4">
+            <div class="mb-3">
+                <label for="username" class="form-label">Nombre de Usuario</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+        </form>
+        <div class="text-center">
+            <p>¿No tienes una cuenta? <a href="#register" id="show-register">Regístrate</a></p>
+        </div>
 
-  <nav id="scrollspy" class="navbar navbar-light bg-light navbar-expand-lg fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#"><img src="assets/imgs/brand.svg" alt="" class="brand-img"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#inicio">Inicio</a>
-                </li>
-                <li class="nav-item"></li>
-                    <a class="nav-link" href="#acerca">Acerca de</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#testimonios">Testimonios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contacto">Contacto</a>
-                </li>
-                <li class="nav-item"></li>
-                    <a href="Login.html" class="btn btn-primary btn-rounded">Iniciar Sesión</a>
-                </li>
-            </ul>
-        </div> 
+        <div id="register" style="display: none;">
+            <h2 class="text-center">Registro</h2>
+            <form id="register-form" class="mb-4">
+                <div class="mb-3">
+                    <label for="register-username" class="form-label">Nombre de Usuario</label>
+                    <input type="text" class="form-control" id="register-username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="register-email" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="register-email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="register-password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="register-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+            </form>
+            <div class="text-center">
+                <p>¿Ya tienes una cuenta? <a href="#login" id="show-login">Inicia Sesión</a></p>
+            </div>
+        </div>
     </div>
-  </nav>
-  
-  <section>  
-    <div class="container mt-5 pt-5"></div>
-    <div class="">
-      <h2>Create una cuenta</h2>
-      <div class="social-buttons">
-        <button class="google-btn">Continua con Google</button>
-        <button class="apple-btn">Continua con Apple</button>
-        <button class="facebook-btn">Continue con Facebook</button>
-      </div>
-      <div class="separator"><span>or</span></div>
-      <form>
-        <div class="input-group">
-          <label for="first-name">Primer nombre</label>
-          <input type="text" id="first-name" required>
-          <small class="error">primer nombre es requerido</small>
-        </div>
-        <div class="input-group">
-          <label for="last-name">Primer apelldio</label>
-          <input type="text" id="prime apellido">
-        </div>
-        <div class="input-group">
-          <label for="email">correo</label>
-          <input type="email" id="correo" required>
-        </div>
-        <div class="input-group">
-          <label for="password">contraseña</label>
-          <input type="password" id="password" required>
-            <small>Usa 8 o más caracteres con una mezcla de letras, números y símbolos.</small>
-        </div>
-        <div class="recaptcha">
-          <input type="checkbox" id="recaptcha">
-          <label for="recaptcha">No soy un robot</label>
-        </div>
-        <button type="submit" class="submit-btn">Crear cuenta</button>
-      </form>
-      <p>¿Ya tienes una cuenta? <a href="Profile.html">Iniciar sesión</a></p>
-    </div>
-  </section>
 
-  
-
-  	<!-- core  -->
-    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
-
-    <!-- bootstrap 3 affix -->
-	<script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
-    
-    <!-- Owl carousel  -->
-    <script src="assets/vendors/owl-carousel/js/owl.carousel.js"></script>
-
-
-    <!-- Ollie js -->
-    <script src="assets/js/Ollie.js"></script>
-
-
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'myapp/js/scripts.js' %}"></script>
 </body>
 </html>
+
