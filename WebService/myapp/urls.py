@@ -1,25 +1,23 @@
-"""
-URL configuration for WebService project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+# urls.py
 from django.urls import path
-from myapp import views
-
+from . import views
+from django.urls import include, path
 
 urlpatterns = [
-    path('', views.index, name='index'),  # Cambia 'views.index' a tu función de índice
-    path('login/', views.login_view, name='login'),  # Cambia a 'views.login_view'
-    # Otras URLs
+    path('myapp/', include('myapp.urls')),
+    # ...
 ]
+
+urlpatterns = [
+    path('index', views.index, name='index'),
+    path('base', views.base, name='base'),
+    path('contacto', views.contacto, name='contacto'),
+    path('metricas', views.metricas, name='metricas'),
+    path('campañas', views.campañas, name='campañas'),
+    path('login_vista',views.login_vista,name='login_vista'),
+    path('logout_vista',views.logout_vista,name='logout_vista'),
+    path('perfil',views.perfil,name='perfil'),
+    path('servicios', views.servicios_vista, name='servicios'), #renderizar los items de servicios en ciclo tomando la funcion
+
+
+] 

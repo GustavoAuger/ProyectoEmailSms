@@ -1,0 +1,63 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<!----------------------------------- NOSOTROS ----------------------------------->
+
+<main class="wap">       
+<div class="metricas" id="">
+      <div class=" flex-column justify-content-center text-white align-items-left padl padl2">
+    		<h1 class="text-uppercase font-weight-bold text-left mx-5 padt delay fadeInDown animated hinge"> ANÁLISIS Y MÉTRICAS</h1>
+    		<p class=" mx-5 text-left textop delay-one fadeInLeft animated hinge "> 
+			<br> - Evalúa el rendimiento de tus campañas.
+			<br> - Analiza el impacto de tus envíos.
+			<br> - Optimiza tus campañas. <br><br>
+			</p>
+			<button type="button" class="btn btn-primary btn-lg mx-5 bofg fadeInUp delay-three animated hinge btncolor"> Más Información </button>
+      </div>
+</div>
+<div class="horario">
+<p class="" ><i class="bi bi-stopwatch"></i> Atención Oficina: Lunes a sábado de 09:00 a 18:00 hrs. /   <i class="bi bi-geo-alt-fill"></i> Ignacio carrera pinto 852, Villa alemana </p>
+</div>
+<section id="serviciossss" class="modulo-servicios">
+<div class="container">
+	<div class="titulo text-center wow fadeInUp tituloserv" style="visibility: visible; animation-name: fadeInUp;"><h2>Analiza tu campaña</h2></div>
+	<div class="space"></div>
+	<div class="row servv">
+		<div class="container">
+			<div class="space"></div>
+			<div class="row servv">
+				<div class="servicio col-lg-6 col-md-6 wow fadeInUp" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+					<div class="box-servicio"> 
+						<a class="btn-cotiza">
+							<div class="img-servicio col-md-12">
+									<div class="icon"> <img width="100" height="90" class="img-responsive" src="https://img.icons8.com/cute-clipart/64/sms.png" alt="sms"/></div>
+							</div> 	
+						</a>
+						<div class="texto col-md-12 text-center"  >
+							<div class="titulo-tres"><h3>Campaña SMS</h3></div>
+					
+							<a class="btn btn-cotiza fadeIn btnserv" data-scroll href="" id="contacto" style="color: white; visibility: visible; animation-name: fadeIn;">Métricas</a>
+						</div>
+					</div>
+				</div>
+				<div class="servicio col-lg-6 col-md-6 wow fadeInUp"  style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+					<div class="box-servicio"> 
+						<a class="btn-cotiza">
+							<div class="img-servicio col-md-12">
+								<div class="icon"> <img width="100" height="100" class="img-responsive" src="https://img.icons8.com/clouds/100/email--v1.png" alt="email--v1"/></div>
+							</div> 
+						</a>
+						<div class="texto col-md-12 text-center">
+								<div class="titulo-tres"><h3>Campaña EMAL</h3></div>
+				
+								<a class="btn btn-cotiza btnserv fadeIn" href="#sec-2" id="contacto" style="color: white; visibility: visible; animation-name: fadeIn;">Métricas</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+</section>
+</main>
+{% endblock %}

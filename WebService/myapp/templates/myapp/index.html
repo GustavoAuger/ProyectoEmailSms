@@ -1,302 +1,65 @@
 
+{% extends 'myapp/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Inicia tu desarrollo con la página de aterrizaje de Ollie enfocada en el envío masivo de emails y SMS.">
-    <meta name="author" content="Devcrud">
-    <title>Envío masivo de emails y SMS</title>
+{% block content %}
 
-    <!-- iconos de fuente -->
-    <link rel="stylesheet" href="{% static 'myapp/vendors/themify-icons/css/themify-icons.css' %}">
-    
-    <!-- carrusel de búho -->
-    <link rel="stylesheet" href="{% static 'myapp/vendors/owl-carousel/css/owl.carousel.css' %}">
-    <link rel="stylesheet" href="{% static 'myapp/vendors/owl-carousel/css/owl.theme.default.css' %}">
-
-    <!-- Bootstrap + estilos  -->
-    <link rel="stylesheet" href="{% static 'myapp/css/ollie.css' %}">
-
-</head>
-<body data-spy="scroll" data-target=".navbar" data-offset="40" id="inicio">
-
-    <nav id="scrollspy" class="navbar navbar-light bg-light navbar-expand-lg fixed-top" data-spy="affix" data-offset-top="20">
-        <div class="container">
-            <a class="navbar-brand" href="#"><img src="{% static 'myapp/imgs/brand.svg' %}" alt="" class="brand-img"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#inicio">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#acerca">Acerca de</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#testimonios">Testimonios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contacto">Contacto</a>
-                    </li>
-                    <li>
-                        <a href="login" class="btn btn-primary btn-rounded">Iniciar Sesión</a>
-                    </li>
-                </ul>
-            </div> 
+<main class="wap">
+    <div class="inicio" id="">
+        <div class="flex-column justify-content-center text-white align-items-left padl">
+            <h1 class="text-uppercase font-weight-bold text-left mx-5 padt delay fadeInDown animated hinge">CONNECTIFY</h1>
+            <p class="mx-5 text-left textop delay-one fadeInLeft animated hinge">Conecta con tus clientes como nunca antes <i class="fadeInDown animated dela">!</i></p>
+            <button type="button" class="btn btn-primary btn-lg mx-5 bofg fadeInUp delay-three animated hinge btncolor"><a class="nav-link" data-scroll href="">Solicite su presupuesto</a></button>
         </div>
-    </nav>
-
-    <header id="home" class="header">
-        <div class="overlay"></div>
-        <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">  
-            <div class="container">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1 class="carousel-title">Crea<br> campañas creativas</h1>
-                            <button class="btn btn-primary btn-rounded">Mas información</button>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1 class="carousel-title">Crea <br> Diseño de plantillas</h1>
-                            <button class="btn btn-primary btn-rounded">Mas información</button>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1 class="carousel-title">Crea <br> simple</h1>
-                            <button class="btn btn-primary btn-rounded">Mas información</button>
-                        </div>
-                    </div>
-                </div>
-            </div>        
+    </div>
+    <div class="horario">
+        <p class=""><i class="bi bi-stopwatch"></i> Atención Oficina: Lunes a sábado de 09:00 a 18:00 hrs. / <i class="bi bi-geo-alt-fill"></i> Ignacio carrera pinto 852, Villa alemana</p>
+    </div>
+    <div class="compromiso-titulo">
+        <h2 class="h2-compromiso-titulo">Nuestro compromiso</h2>
+        <h4 class="h4">En Rayo Makween nos comprometemos a brindar un servicio de calidad, con la mejor atención y los mejores precios del mercado.</h4>
+    </div>
+    <div class="row contenedor-compromisos">
+        <div class="compromiso-container compromiso1 col-lg-3 col-md-6">
+            <img src="{% static 'myapp/img/icons/icono_cliente.png' %}" alt="Icono 1 compromiso">
+            <h3 class="compromiso-subtitulo">ORIENTACIÓN AL CLIENTE</h3>
+            <p class="compromiso-descripcion">Sabemos lo importante que es tu comunicación con los clientes y estamos aquí para ayudarte a mejorarla.</p>
         </div>
-
-        <div class="infos container mb-4 mb-md-2">
-            <div class="title">
-                <h6 class="subtitle font-weight-normal">¿Estás buscando?</h6>
-                <h5>Lorem ipsum</h5>
-                <p class="font-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-            <div class="socials text-right">
-                <div class="row justify-content-between">
-                    <div class="col">
-                        <a class="d-block subtitle"><i class="ti-microphone pr-2"></i> (123) 456-7890</a>
-                        <a class="d-block subtitle"><i class="ti-email pr-2"></i> info@website.com</a>
-                    </div>
-                    <div class="col">
-                        <h6 class="subtitle font-weight-normal mb-2">Social Media</h6>
-                        <div class="social-links">
-                            <a href="javascript:void(0)" class="link pr-1"><i class="ti-facebook"></i></a>
-                            <a href="javascript:void(0)" class="link pr-1"><i class="ti-twitter-alt"></i></a>
-                            <a href="javascript:void(0)" class="link pr-1"><i class="ti-google"></i></a>
-                            <a href="javascript:void(0)" class="link pr-1"><i class="ti-pinterest-alt"></i></a>
-                            <a href="javascript:void(0)" class="link pr-1"><i class="ti-instagram"></i></a>
-                            <a href="javascript:void(0)" class="link pr-1"><i class="ti-rss"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="compromiso-container compromiso2 col-lg-3 col-md-6">
+            <img src="{% static 'myapp/img/icons/icono_estrella.png' %}" alt="Icono 2">
+            <h3 class="compromiso-subtitulo">COMPROMISO CON LA CALIDAD</h3>
+            <p class="compromiso-descripcion">Nuestro servicio de campañas masivas está diseñado para ofrecer resultados efectivos y duraderos.</p>
         </div>
-    </header>
-
-    <section class="section" id="about">
-        <div class="container">
-            <div class="row align-items-center mr-auto">
-                <div class="col-md-4">
-                    <h3 class="section-title">Acerca de nosotros</h3>
-                    <p>Nos especializamos en ofrecer soluciones innovadoras para la gestión y envío masivo de correos electrónicos y SMS, ayudando a nuestros clientes a maximizar el impacto de sus campañas de marketing. Nuestro objetivo es proporcionar una plataforma robusta y eficiente que permita ejecutar campañas de manera rápida y segura, garantizando el cumplimiento de las normativas y horarios.</p>
-                    <a href="javascript:void(0)">Leer más...</a>
-                </div>
-                <div class="col-sm-6 col-md-4 ml-auto">
-                    <div class="widget">
-                        <div class="icon-wrapper">
-                            <i class="ti-calendar"></i>
-                        </div>
-                        <div class="infos-wrapper">
-                            <h4 class="text-primary">15+</h4>
-                            <p>Años de experiencia. Más de una década ayudando a empresas a alcanzar a sus audiencias con campañas de marketing efectivas y segmentadas. Nuestra experiencia asegura que tus mensajes siempre lleguen a las personas correctas.</p>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="icon-wrapper">
-                            <i class="ti-face-smile"></i>
-                        </div>
-                        <div class="infos-wrapper">
-                            <h4 class="text-primary">125+</h4>
-                            <p>Campañas exitosas. Hemos gestionado miles de campañas, permitiendo a nuestros clientes maximizar el impacto de sus comunicaciones a través de envíos masivos de correos electrónicos y SMS.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="widget">
-                        <div class="icon-wrapper">
-                            <i class="ti-star"></i>
-                        </div>
-                        <div class="infos-wrapper">
-                            <h4 class="text-primary">3434+</h4>
-                            <p>Clientes satisfechos. Nuestra prioridad es el éxito de nuestros clientes. Más de 125 empresas confían en nosotros para la gestión eficiente de sus campañas y la mejora continua de su alcance.</p>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="icon-wrapper">
-                            <i class="ti-user"></i>
-                        </div>
-                        <div class="infos-wrapper">
-                            <h4 class="text-primary">80+</h4>
-                            <p>Expertos en marketing. Contamos con un equipo de más de 80 especialistas dedicados a optimizar cada campaña, asegurando que tu mensaje sea efectivo, relevante y llegue en el momento adecuado.</p>
-                        </div>
-                    </div>
-                </div>
-             </div>
+        <div class="compromiso-container compromiso3 col-lg-3 col-md-3">
+            <img src="{% static 'myapp/img/icons/icono_signo_dolar.png' %}" alt="Icono 3">
+            <h3 class="compromiso-subtitulo">TRANSPARENCIA</h3>
+            <p class="compromiso-descripcion">Solo pagas por el alcance real de tus campañas; sin costos ocultos, solo resultados visibles.</p>
         </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h6 class="xs-font mb-0">Blanditiis unde illum earum</h6>
-            <h3 class="section-title mb-4">Expertises</h3>
-
-            <div class="row text-center">
-                <div class="col-lg-4">
-                    <a href="javascript:void(0)" class="card border-0 text-dark">
-                        <img class="card-img-top" src="{% static 'myapp/imgs/img-1.jpg' %}" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Campañas Creativas</h5>
-                            <p class="card-text">Desarrollamos campañas que cautivan la atención de tus usuarios y generan un alto compromiso.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <a href="javascript:void(0)" class="card border-0 text-dark">
-                        <img class="card-img-top" src="{% static 'myapp/imgs/img-2.jpg' %}" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Diseño de Plantillas</h5>
-                            <p class="card-text">Creamos plantillas atractivas y funcionales que resaltan la esencia de tu marca.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <a href="javascript:void(0)" class="card border-0 text-dark">
-                        <img class="card-img-top" src="{% static 'myapp/imgs/img-3.jpg' %}" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">Análisis de Resultados</h5>
-                            <p class="card-text">Te ayudamos a interpretar los datos de tus campañas para optimizar tu estrategia de marketing.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+    </div>
+    <div class="testimonios-titulo">
+        <h2 class="h2-testimonios-titulo">Testimonios de clientes</h2>
+        <p class="parrafo-testimonios">
+            Aquí puedes encontrar algunos testimonios de nuestros clientes satisfechos.
+        </p>
+    </div>
+    <div class="contenedor-testimonios row" style="margin-bottom:10%;">
+        <div class="testimonio-container testimonio1 col-sm-12 col-md-4">
+            <img src="{% static 'myapp/img/icons/comillas.png' %}" alt="comillas" id="comillas">
+            <p class="testimonio-comentario">"Connectify ha transformado nuestras campañas de marketing. Las tasas de apertura de nuestros correos y SMS han crecido significativamente, y la plataforma es tan intuitiva que nos permite crear campañas en cuestión de minutos."</p>
+            <img src="{% static 'myapp/img/clientes/cliente_1.png' %}" alt="Cliente 1" class="img-fluid">
+            <h3 class="testimonio-nombre">— Laura Sánchez, <br>Directora de Marketing, Trendify</h3>
         </div>
-    </section>
-
-    <section class="section" id="testimonials">
-        <div class="container">
-            <h3 class="section-title">Testimonios</h3>
-    
-            <div id="testimonial-carousel" class="carousel slide" data-ride="carousel" data-interval="3000">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8 d-flex align-items-start">
-                                <img src="{% static 'myapp/imgs/avatar1.jpg' %}" class="avatar" alt="" style="border-radius: 50%; border: 2px solid #ddd; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); width: 100px; height: 100px; margin-right: 20px;">
-                                <div class="testimonial-content">
-                                    <p class="quote">“Este servicio ha transformado nuestra forma de comunicarnos con nuestros clientes. ¡Altamente recomendado!”</p>
-                                    <h5 class="author">Juan Pérez</h5>
-                                    <span class="subtitle">Director de Marketing</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8 d-flex align-items-start">
-                                <img src="{% static 'myapp/imgs/avatar2.jpg' %}" class="avatar" alt="" style="border-radius: 50%; border: 2px solid #ddd; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); width: 100px; height: 100px; margin-right: 20px;">
-                                <div class="testimonial-content">
-                                    <p class="quote">“La eficiencia en el envío y el análisis de resultados nos han permitido mejorar nuestras estrategias.”</p>
-                                    <h5 class="author">María González</h5>
-                                    <span class="subtitle">Gerente de Ventas</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8 d-flex align-items-start">
-                                <img src="{% static 'myapp/imgs/avatar3.jpg' %}" class="avatar" alt="" style="border-radius: 50%; border: 2px solid #ddd; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); width: 100px; height: 100px; margin-right: 20px;">
-                                <div class="testimonial-content">
-                                    <p class="quote">“El soporte técnico es excepcional. Siempre están ahí para ayudarnos.”</p>
-                                    <h5 class="author">Carlos Torres</h5>
-                                    <span class="subtitle">Fundador de Startup XYZ</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Anterior</span>
-                </a>
-                <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Siguiente</span>
-                </a>
-            </div>
+        <div class="testimonio-container testimonio2 col-sm-12 col-md-4">
+            <img src="{% static 'myapp/img/icons/comillas.png' %}" alt="comillas" id="comillas">
+            <p class="testimonio-comentario">"Lo mejor de Connectify es la capacidad de segmentación y personalización. Podemos enviar mensajes adaptados a cada tipo de cliente, y eso ha aumentado notablemente nuestras conversiones."</p>
+            <img src="{% static 'myapp/img/clientes/cliente_2.png' %}" alt="Cliente 2" class="img-fluid">
+            <h3 class="testimonio-nombre">— Juan Garcia, <br>CEO, ShopConnect</h3>
         </div>
-    </section>
-    
-    
-    
-
-    <section class="section" id="contact">
-        <div class="container">
-            <h3 class="section-title">Contacto</h3>
-
-            <form action="#" method="POST" class="contact-form">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="name" placeholder="Nombre" required>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="email" class="form-control" id="email" placeholder="Correo Electrónico" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="subject" placeholder="Asunto" required>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" id="message" rows="5" placeholder="Mensaje" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary btn-rounded">Enviar</button>
-            </form>
+        <div class="testimonio-container testimonio3 col-sm-12 col-md-4">
+            <img src="{% static 'myapp/img/icons/comillas.png' %}" alt="comillas" id="comillas">
+            <p class="testimonio-comentario">"Desde que usamos Connectify, las interacciones con nuestros clientes son mucho más efectivas. Nos permite llegar a ellos de manera directa y profesional, y el soporte es excelente. Una herramienta imprescindible para nuestra estrategia."</p>
+            <img src="{% static 'myapp/img/clientes/cliente_3.png' %}" alt="Cliente 3" class="img-fluid">
+            <h3 class="testimonio-nombre">— Pedro Martínez, <br>Gerente de Comunicación, SaludPlus</h3>
         </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <p class="mb-0">&copy; 2024 Ollie. Todos los derechos reservados.</p>
-                </div>
-                <div class="col-lg-6 text-right">
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item"><a href="#about">Acerca de</a></li>
-                        <li class="list-inline-item"><a href="#contact">Contacto</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- jQuery, Bootstrap y Owl Carousel -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'myapp/vendors/owl-carousel/js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'myapp/js/ollie.js' %}"></script>
-</body>
-</html>
+    </div>
+</main>
+{% endblock %}
