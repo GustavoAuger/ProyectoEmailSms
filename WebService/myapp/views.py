@@ -1,7 +1,6 @@
 
 from django.http import HttpResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import cliente, Servicio
 from django.db.utils import IntegrityError
 from django.contrib.auth import authenticate
 from django.contrib import messages
@@ -44,19 +43,14 @@ def modificar(request):
 def eliminar(request):
     return render(request, 'myapp/eliminar.html')
 
-
 def baterias(request):
     return render(request, 'myapp/baterias.html')
-
 
 def servicios(request):
     return render(request, 'myapp/servicios.html')
 
 def servicios_vista(request):
-    servicios = Servicio.objects.all()
-    return render(request, 'myapp/servicios.html', {'servicios': servicios}) #hacer ciclo de servicios
-
-    
+    return render(request, 'myapp/servicios.html')
 
 def login_vista(request):
     if request.method == 'POST':
