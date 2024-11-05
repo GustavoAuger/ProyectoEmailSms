@@ -1,0 +1,24 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<main class="perfil-fondo"> 
+  <div style="height: 100%; padding-top:200px">
+    <div class="perfil">
+		 <form class= "row g-3 d-flex align-items-center justify-content-center" action="">
+           <!--INPUTS-->
+            <div class = "col-3" style="margin-left:10%"><label for="nombreInput" class="form-label fontxperf">Nombre:  {{ cliente.nombre }}</label></div>
+            <div class = "col-3" style="margin-left:10%"><label for="apellidosInput" class="form-label fontxperf">Apellido(s): </label> </div>
+            <div class = "col-3" style="margin-left:10%"><label for="rutInput" class="form-label fontxperf">Telefono: {{ cliente.telefono }} </label></div>
+            <div class = "col-3" style="margin-left:10%"><label for="emailInput" class="form-label fontxperf">Correo:  {{ cliente.email }}</label></div>
+            <div class = "col-10"></div> <!--Vacio para hacer saltos-->
+            
+            <button type="submit" class="btn btn-primary col-2 mb-4 propbtn mx-5 mt-4 align-items-left" style="display: block">Actualizar Datos</button>
+            <button type="button" class="btn btn-primary col-2 mb-4 mt-4 propbtn mx-5"><a class="nav-link" data-scroll href="">Eliminar cuenta</a></button>
+          </form>
+        </div>
+    </div>
+</main>
+    
+
+{% endblock %}

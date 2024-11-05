@@ -1,0 +1,38 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+<main class="perfil-fondo-e"> 
+    <div style="height: 100%; padding-top:200px">
+      <div class="perfil">
+<div class="container col-6">
+  <div style="align-items: center; margin:auto; justify-content: center; width:100%; display:flex;">
+      <h3 class="fontxperf">Eliminar Cuenta</h3>
+  </div>
+  {% if mensaje_error %}
+      <p>{{ mensaje_error }}</p>
+  {% endif %}
+  <br><br>
+  <div style="align-items: center; margin:auto; justify-content: center; width:100%; display:flex;">
+      <p class="fontxperf">Por favor, ingresa tu contraseña para confirmar la eliminación de la cuenta.</p>
+  </div>
+
+  <form action="{% url 'eliminar_cuenta' %}" method="post" class="row g-3 d-flex align-items-center justify-content-center">
+      {% csrf_token %}
+      <!-- Input de la contraseña -->
+      <div class="col-9" style="width:30%; margin-left:30%; margin-right:30%; margin-bottom:3%; margin-top:3%">
+          <label for="contrasenaInput" class="form-label fontxperf">Contraseña</label>
+          <input type="password" class="form-control" id="contrasenaInput" name="contrasena" placeholder="Ingrese su contraseña" required>
+      </div>
+
+      <!-- Botones -->
+      <div class="col-12" style="align-items: center; margin:auto; justify-content: center; width:100%; display:flex; margin-bottom:9%;">
+          <button type="button" class="btn btn-primary mx-3" onclick="window.history.back()">Volver atrás</button>
+          <button type="submit" class="btn btn-danger mx-3">Eliminar</button>
+      </div>
+  </form>
+</div>
+</div>
+</div>
+</main>
+
+{% endblock %}
