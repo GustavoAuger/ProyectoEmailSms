@@ -22,8 +22,8 @@ def contacto(request):
 def metricas(request):
     return render(request, 'myapp/metricas.html')
 
-def campañas(request):
-    return render(request, 'myapp/campañas.html')
+def campanas(request):
+    return render(request, 'myapp/campanas.html')
 
 def base(request):
     return render(request, 'myapp/base.html')
@@ -60,9 +60,9 @@ def login_vista(request):
 
         try:
             print("probando")
-            response = requests.post('http://localhost:5002/login', json={
-                'correo': correo, 
-                'contrasena': contrasena
+            response = requests.post('http://apismsemail-production.up.railway.app/login', json={
+                'email': correo, 
+                'password': contrasena
             })
     
             if response.status_code == 200:
