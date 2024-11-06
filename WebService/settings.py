@@ -69,18 +69,13 @@ WSGI_APPLICATION = 'VercelDeploy.wsgi.app'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join('/tmp', 'db.sqlite3'),  # Cambia la ubicación a /tmp
     }
-}
-
-MIGRATION_MODULES = {
-    'auth': None,
-    'sessions': None,
-    'contenttypes': None,
-    'admin': None,
 }
 
 # Password validation

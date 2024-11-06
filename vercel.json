@@ -2,29 +2,13 @@
   "builds": [
     {
       "src": "manage.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
+      "use": "@vercel/python"
     }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "manage.py"
-    }
+    { "src": "/(.*)", "dest": "manage.py" }
   ],
-  "env": {
-    "DJANGO_SETTINGS_MODULE": "WebService.settings",
-    "ENV": "PRODUCTION"
-  },
-  "build": {
-    "env": {
-      "DJANGO_SETTINGS_MODULE": "WebService.settings",
-      "ENV": "PRODUCTION"
-    }
+  "scripts": {
+    "post-build": "python init_db.py"
   }
-  ,
-"buildCommand": "python manage.py migrate && python manage.py collectstatic --noinput"
-
 }
