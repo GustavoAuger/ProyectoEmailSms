@@ -23,3 +23,4 @@ if __name__ == '__main__':
 
 # Exponer la aplicación WSGI para Vercel
 app = get_wsgi_application()
+handler = app
