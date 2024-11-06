@@ -9,6 +9,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myapp.urls')),
 
+]
+
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
