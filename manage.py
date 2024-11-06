@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
+from django.core.wsgi import get_wsgi_application
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'WebService.settings')
@@ -19,3 +20,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# Exponer la aplicación WSGI para Vercel
+app = get_wsgi_application()
