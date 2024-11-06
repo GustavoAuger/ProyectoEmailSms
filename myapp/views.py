@@ -4,15 +4,20 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.db.utils import IntegrityError
 from django.contrib.auth import authenticate
 from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
+from django.conf import settings
 from django.http import JsonResponse
 from django.contrib.contenttypes.models import ContentType
-import requests
+
 import json   #para leer json
-from django.conf import settings #parte para finalizar la compra
+#parte para finalizar la compra
+
 #para enviar correos
 from django.contrib import messages
 import random #para generar numeros random
 import string
+
+import requests
 
 
 # Create your views here.
@@ -25,8 +30,9 @@ def contacto(request):
 def metricas(request):
     return render(request, 'myapp/metricas.html')
 
-def campañas(request):
-    return render(request, 'myapp/campañas.html')
+
+def campanas(request):
+    return render(request, 'myapp/campanas.html')
 
 def base(request):
     return render(request, 'myapp/base.html')
@@ -56,21 +62,36 @@ def login_vista(request):
     if request.method == 'POST':
         correo = request.POST.get('correo')
         contrasena = request.POST.get('contrasena')
-        
-        # Hacer una solicitud a la API para autenticar al usuario
-        response = requests.post('http://localhost:5000/login', json={
-            'correo': correo,
-            'contrasena': contrasena
-        })
 
-        if response.status_code == 200:
-            cliente_data = response.json()
-            request.session['cliente_id'] = cliente_data['id']  # Almacena el ID en la sesión
-            print(cliente_data['id'])
-            return redirect('perfil')  # Redirige a la página de perfil
-        else:
-            mensaje = response.json().get('error', 'Error desconocido')
-            return render(request, 'myapp/index.html', {'mensaje': mensaje})  # Muestra el mensaje de error
+
+        if not correo or not contrasena:
+            messages.error(request, 'Por favor ingrese ambos campos.')
+            return redirect('index')
+
+        try:
+            print("probando")
+            response = requests.post('https://apismsemail-production.up.railway.app/login', json={
+                'email': correo, 
+                'password': contrasena
+            })
+    
+            if response.status_code == 200:
+                cliente_data = response.json()
+                request.session['cliente_id'] = cliente_data['id']  # Almacena el ID en la sesión
+                print(cliente_data['id'])
+                return redirect('perfil')  # Redirige a la página de perfil
+            else:
+                print("hola")
+                mensaje = response.json().get('error', 'Error desconocido')
+                print("error")
+                messages.error(request, mensaje)
+                return redirect('index')
+        except requests.exceptions.RequestException as e:
+            messages.error(request, f'Error de conexión: {e}')
+            print("error")
+            return redirect('index')
+    return render(request, 'perfil')
+
 
 def logout_vista(request):
     try:

@@ -7,9 +7,11 @@
     <div class="perfil">
 		 <form class= "row g-3 d-flex align-items-center justify-content-center" action="">
            <!--INPUTS-->
-            <div class = "col-3" style="margin-left:10%"><label for="nombreInput" class="form-label fontxperf">Nombre:  {{ cliente.nombre }}</label></div>
+
+            <div class = "col-3" style="margin-left:10%"><label for="nombreInput" class="form-label fontxperf">Nombre:  {{ cliente.cliente_name }}</label></div>
             <div class = "col-3" style="margin-left:10%"><label for="apellidosInput" class="form-label fontxperf">Apellido(s): </label> </div>
-            <div class = "col-3" style="margin-left:10%"><label for="rutInput" class="form-label fontxperf">Telefono: {{ cliente.telefono }} </label></div>
+            <div class = "col-3" style="margin-left:10%"><label for="rutInput" class="form-label fontxperf">Telefono: {{ cliente.fono }} </label></div>
+
             <div class = "col-3" style="margin-left:10%"><label for="emailInput" class="form-label fontxperf">Correo:  {{ cliente.email }}</label></div>
             <div class = "col-10"></div> <!--Vacio para hacer saltos-->
             
