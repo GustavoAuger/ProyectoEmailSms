@@ -31,6 +31,10 @@
 <div class="horario">
 <p class="" ><i class="bi bi-stopwatch"></i> Atención Oficina: Lunes a sábado de 09:00 a 18:00 hrs. /   <i class="bi bi-geo-alt-fill"></i> Ignacio carrera pinto 852, Villa alemana </p>
 </div>
+
+
+
+
 <!----------------------------------middle serv--------------------------------->
 <section id="serviciossss" class="modulo-servicios">
 <div class="container">
@@ -64,10 +68,10 @@
 				<div class="texto col-md-12 text-center">
 					<div class="titulo-tres"><h3>Crear campañas EMAIL</h3></div>
 						<p>Diseña correos atractivos y segmenta tu audiencia para maximizar el impacto de tus comunicaciones.</p>
-						<form method="post" action="">
-							{% csrf_token %}
-							<button type="submit" class="btn btn-cotiza fadeIn btnserv">Crear</button>
-						</form>
+
+						<button type="button" class="btn btn-cotiza fadeIn btnserv" data-bs-toggle="modal" data-bs-target="#seleccionTipoCampanaModal">
+							Crear
+						</button>
 				</div>
 			</div>
 		</div>
