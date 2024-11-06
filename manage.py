@@ -1,15 +1,14 @@
 #!/usr/bin/env python
+"""Django's command-line utility for administrative tasks."""
 import os
 import sys
-from django.core.wsgi import get_wsgi_application
+
 
 def main():
+    """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'WebService.settings')
     try:
         from django.core.management import execute_from_command_line
-        # Ejecutar migraciones automáticamente en Vercel
-        if os.getenv('ENV') == 'PRODUCTION':
-            execute_from_command_line(['manage.py', 'migrate'])
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
@@ -18,9 +17,6 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
+
 if __name__ == '__main__':
     main()
-
-# Exponer la aplicación WSGI para Vercel
-app = get_wsgi_application()
-handler = app
