@@ -1,0 +1,65 @@
+
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<main class="wap">
+    <div class="inicio" id="">
+        <div class="flex-column justify-content-center text-white align-items-left padl">
+            <h1 class="text-uppercase font-weight-bold text-left mx-5 padt delay fadeInDown animated hinge">CONNECTIFY</h1>
+            <p class="mx-5 text-left textop delay-one fadeInLeft animated hinge">Conecta con tus clientes como nunca antes <i class="fadeInDown animated dela">!</i></p>
+            <button type="button" class="btn btn-primary btn-lg mx-5 bofg fadeInUp delay-three animated hinge btncolor"><a class="nav-link" data-scroll href="">Solicite su presupuesto</a></button>
+        </div>
+    </div>
+    <div class="horario">
+        <p class=""><i class="bi bi-stopwatch"></i> Atención Oficina: Lunes a sábado de 09:00 a 18:00 hrs. / <i class="bi bi-geo-alt-fill"></i> Ignacio carrera pinto 852, Villa alemana</p>
+    </div>
+    <div class="compromiso-titulo">
+        <h2 class="h2-compromiso-titulo">Nuestro compromiso</h2>
+        <h4 class="h4">En Rayo Makween nos comprometemos a brindar un servicio de calidad, con la mejor atención y los mejores precios del mercado.</h4>
+    </div>
+    <div class="row contenedor-compromisos">
+        <div class="compromiso-container compromiso1 col-lg-3 col-md-6">
+            <img src="{% static 'myapp/img/icons/icono_cliente.png' %}" alt="Icono 1 compromiso">
+            <h3 class="compromiso-subtitulo">ORIENTACIÓN AL CLIENTE</h3>
+            <p class="compromiso-descripcion">Sabemos lo importante que es tu comunicación con los clientes y estamos aquí para ayudarte a mejorarla.</p>
+        </div>
+        <div class="compromiso-container compromiso2 col-lg-3 col-md-6">
+            <img src="{% static 'myapp/img/icons/icono_estrella.png' %}" alt="Icono 2">
+            <h3 class="compromiso-subtitulo">COMPROMISO CON LA CALIDAD</h3>
+            <p class="compromiso-descripcion">Nuestro servicio de campañas masivas está diseñado para ofrecer resultados efectivos y duraderos.</p>
+        </div>
+        <div class="compromiso-container compromiso3 col-lg-3 col-md-3">
+            <img src="{% static 'myapp/img/icons/icono_signo_dolar.png' %}" alt="Icono 3">
+            <h3 class="compromiso-subtitulo">TRANSPARENCIA</h3>
+            <p class="compromiso-descripcion">Solo pagas por el alcance real de tus campañas; sin costos ocultos, solo resultados visibles.</p>
+        </div>
+    </div>
+    <div class="testimonios-titulo">
+        <h2 class="h2-testimonios-titulo">Testimonios de clientes</h2>
+        <p class="parrafo-testimonios">
+            Aquí puedes encontrar algunos testimonios de nuestros clientes satisfechos.
+        </p>
+    </div>
+    <div class="contenedor-testimonios row" style="margin-bottom:10%;">
+        <div class="testimonio-container testimonio1 col-sm-12 col-md-4">
+            <img src="{% static 'myapp/img/icons/comillas.png' %}" alt="comillas" id="comillas">
+            <p class="testimonio-comentario">"Connectify ha transformado nuestras campañas de marketing. Las tasas de apertura de nuestros correos y SMS han crecido significativamente, y la plataforma es tan intuitiva que nos permite crear campañas en cuestión de minutos."</p>
+            <img src="{% static 'myapp/img/clientes/cliente_1.png' %}" alt="Cliente 1" class="img-fluid">
+            <h3 class="testimonio-nombre">— Laura Sánchez, <br>Directora de Marketing, Trendify</h3>
+        </div>
+        <div class="testimonio-container testimonio2 col-sm-12 col-md-4">
+            <img src="{% static 'myapp/img/icons/comillas.png' %}" alt="comillas" id="comillas">
+            <p class="testimonio-comentario">"Lo mejor de Connectify es la capacidad de segmentación y personalización. Podemos enviar mensajes adaptados a cada tipo de cliente, y eso ha aumentado notablemente nuestras conversiones."</p>
+            <img src="{% static 'myapp/img/clientes/cliente_2.png' %}" alt="Cliente 2" class="img-fluid">
+            <h3 class="testimonio-nombre">— Juan Garcia, <br>CEO, ShopConnect</h3>
+        </div>
+        <div class="testimonio-container testimonio3 col-sm-12 col-md-4">
+            <img src="{% static 'myapp/img/icons/comillas.png' %}" alt="comillas" id="comillas">
+            <p class="testimonio-comentario">"Desde que usamos Connectify, las interacciones con nuestros clientes son mucho más efectivas. Nos permite llegar a ellos de manera directa y profesional, y el soporte es excelente. Una herramienta imprescindible para nuestra estrategia."</p>
+            <img src="{% static 'myapp/img/clientes/cliente_3.png' %}" alt="Cliente 3" class="img-fluid">
+            <h3 class="testimonio-nombre">— Pedro Martínez, <br>Gerente de Comunicación, SaludPlus</h3>
+        </div>
+    </div>
+</main>
+{% endblock %}

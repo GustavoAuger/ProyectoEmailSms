@@ -1,0 +1,92 @@
+
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}v   
+<!-- Modal para mostrar mensajes -->
+<div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="mensajeModalLabel">Mensaje</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Contenido del mensaje dinámico -->
+          {% if mensaje %}
+          <p>{{mensaje}}</p>
+         {% endif %}
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<main class="wap">
+    <div class="inicio" id="">
+        <div class="flex-column justify-content-center text-white align-items-left padl">
+            <h1 class="text-uppercase font-weight-bold text-left mx-5 padt delay fadeInDown animated hinge">TALLER MECANICO RAYO MAKWEEN</h1>
+            <p class="mx-5 text-left textop delay-one fadeInLeft animated hinge">Tu viaje, nuestro compromiso: Mantenimiento mecánico con calidad y confianza <i class="fadeInDown animated dela">!</i></p>
+            <button type="button" class="btn btn-primary btn-lg mx-5 bofg fadeInUp delay-three animated hinge btncolor" href="#sec-2" id="contacto">Solicite su presupuesto</button>
+        </div>
+    </div>
+    <div class="horario">
+        <p class=""><i class="bi bi-stopwatch"></i> Horario de atención: Lunes a sábado de 09:00 a 18:00 hrs. / <i class="bi bi-geo-alt-fill"></i> Ignacio carrera pinto 852, Villa alemana</p>
+    </div>
+    <div class="compromiso-titulo">
+        <h2 class="h2-compromiso-titulo">Nuestro compromiso</h2>
+        <h4 class="h4">En Rayo Makween nos comprometemos a brindar un servicio de calidad, con la mejor atención y los mejores precios del mercado.</h4>
+    </div>
+    <div class="row contenedor-compromisos">
+        <div class="compromiso-container compromiso1 col-lg-3 col-md-6">
+            <img src="{% static 'myapp/img/icons/icono_cliente.png' %}" alt="Icono 1 compromiso">
+            <h3 class="compromiso-subtitulo">ORIENTACIÓN AL CLIENTE</h3>
+            <p class="compromiso-descripcion">Entendemos el valor de tu vehículo para ti y tu familia.</p>
+        </div>
+        <div class="compromiso-container compromiso2 col-lg-3 col-md-6">
+            <img src="{% static 'myapp/img/icons/icono_estrella.png' %}" alt="Icono 2">
+            <h3 class="compromiso-subtitulo">COMPROMISO CON LA CALIDAD</h3>
+            <p class="compromiso-descripcion">Un servicio técnico de calidad prolonga la vida útil de tu vehículo.</p>
+        </div>
+        <div class="compromiso-container compromiso3 col-lg-3 col-md-3">
+            <img src="{% static 'myapp/img/icons/icono_signo_dolar.png' %}" alt="Icono 3">
+            <h3 class="compromiso-subtitulo">TRANSPARENCIA</h3>
+            <p class="compromiso-descripcion">Cobramos lo que hacemos y hacemos lo que cobramos.</p>
+        </div>
+    </div>
+    <div class="testimonios-titulo">
+        <h2 class="h2-testimonios-titulo">Testimonios de clientes</h2>
+        <p class="parrafo-testimonios">
+            Aquí puedes encontrar algunos testimonios de nuestros clientes satisfechos.
+        </p>
+    </div>
+    <div class="contenedor-testimonios row">
+        <div class="testimonio-container testimonio1 col-sm-12 col-md-4">
+            <img src="{% static 'myapp/img/icons/comillas.png' %}" alt="comillas" id="comillas">
+            <p class="testimonio-comentario">¡Excelente servicio! El equipo de Rayo Makween solucionó el problema de mi automóvil de manera rápida y eficiente. ¡Altamente recomendado!</p>
+            <img src="{% static 'myapp/img/clientes/cliente_1.png' %}" alt="Cliente 1" class="img-fluid">
+            <h3 class="testimonio-nombre">María López</h3>
+        </div>
+        <div class="testimonio-container testimonio2 col-sm-12 col-md-4">
+            <img src="{% static 'myapp/img/icons/comillas.png' %}" alt="comillas" id="comillas">
+            <p class="testimonio-comentario">He llevado mi vehículo a Rayo Makween en varias ocasiones y siempre han superado mis expectativas. Profesionales de primera categoría.</p>
+            <img src="{% static 'myapp/img/clientes/cliente_2.png' %}" alt="Cliente 2" class="img-fluid">
+            <h3 class="testimonio-nombre">Carlos García</h3>
+        </div>
+        <div class="testimonio-container testimonio3 col-sm-12 col-md-4">
+            <img src="{% static 'myapp/img/icons/comillas.png' %}" alt="comillas" id="comillas">
+            <p class="testimonio-comentario">¡Increíble experiencia! El personal de Rayo Makween me ayudó con el mantenimiento de mi auto y quedé completamente satisfecho con el resultado.</p>
+            <img src="{% static 'myapp/img/clientes/cliente_3.png' %}" alt="Cliente 3" class="img-fluid">
+            <h3 class="testimonio-nombre">Pedro Martínez</h3>
+        </div>
+    </div>
+</main>
+<script>
+    // MODAL REGISTRO EXITOSO O ERROR
+    window.onload = function() {
+      var myModal = new bootstrap.Modal(document.getElementById('mensajeModal'), {});
+      myModal.show();
+    };
+</script>
+{% endblock %}
