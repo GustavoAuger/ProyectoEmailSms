@@ -1,0 +1,106 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!--------------------------------servicios----------------------------->
+<div class="cuerpof">
+<main class="wap" id="">
+	<div class="slider-wrapper theme-mi-slider">
+		<div id="slider" class="nivoSlider">     
+		    <img src="{% static 'myapp/img/1.jpg' %}" alt="" title="#htmlcaption1" />    
+		    <img src="{% static 'myapp/img/2.jpg' %}" alt="" title="#htmlcaption2" /> 
+			<img src="{% static 'myapp/img/3.jpg' %}" alt="" title="#htmlcaption3" />    
+		    <img src="{% static 'myapp/img/4.jpg' %}" alt="" title="#htmlcaption4" />    		
+		</div>   
+		
+		<div id="htmlcaption1" class="nivo-html-caption">     
+		    <h1 class="textoresponsive">Gestiona tus campañas</h1>
+		</div>
+		<div id="htmlcaption2" class="nivo-html-caption">     
+		    <h1 class="textoresponsive">Elige tus templates</h1>
+		</div>
+		<div id="htmlcaption3" class="nivo-html-caption">     
+		    <h1 class="textoresponsive">Revisa tus estadisticas</h1>
+		</div>
+		<div id="htmlcaption4" class="nivo-html-caption">     
+		    <h1 class="textoresponsive">Campaña sms & Email Masivos</h1>
+		</div>
+	</div> 
+	
+<div class="horario">
+<p class="" ><i class="bi bi-stopwatch"></i> Atención Oficina: Lunes a sábado de 09:00 a 18:00 hrs. /   <i class="bi bi-geo-alt-fill"></i> Ignacio carrera pinto 852, Villa alemana </p>
+</div>
+<!----------------------------------middle serv--------------------------------->
+<section id="serviciossss" class="modulo-servicios">
+<div class="container">
+	<div class="titulo text-center wow fadeInUp tituloserv" style="visibility: visible; animation-name: fadeInUp;"><h2>Servicios</h2></div>
+	<div class="space"></div>
+	<div class="row servv">	
+		<div class="servicio col-lg-4 col-md-6 wow fadeInUp" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+			<div class="box-servicio"> 
+				<a class="btn-cotiza">
+					<div class="img-servicio col-md-12">
+						<div class="icon"> <img width="100" height="90" class="img-responsive" src="https://img.icons8.com/cute-clipart/64/sms.png" alt="sms"/></div>
+					</div>     
+				</a>
+				<div class="texto col-md-12 text-center">
+					<div class="titulo-tres"><h3>Crear campañas SMS</h3></div>
+						<p>Llega a tus clientes de manera rápida y directa con mensajes de texto personalizados y efectivos.</p>
+						<form method="post" action="">
+							{% csrf_token %}
+							<button type="submit" class="btn btn-cotiza fadeIn btnserv">Crear</button>
+						</form>
+				</div>
+			</div>
+		</div>
+		<div class="servicio col-lg-4 col-md-6 wow fadeInUp" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+			<div class="box-servicio"> 
+				<a class="btn-cotiza">
+					<div class="img-servicio col-md-12">
+						<div class="icon"> <img width="100" height="100" class="img-responsive" src="https://img.icons8.com/clouds/100/email--v1.png" alt="email--v1"/></div>
+					</div>     
+				</a>
+				<div class="texto col-md-12 text-center">
+					<div class="titulo-tres"><h3>Crear campañas EMAIL</h3></div>
+						<p>Diseña correos atractivos y segmenta tu audiencia para maximizar el impacto de tus comunicaciones.</p>
+						<form method="post" action="">
+							{% csrf_token %}
+							<button type="submit" class="btn btn-cotiza fadeIn btnserv">Crear</button>
+						</form>
+				</div>
+			</div>
+		</div>
+		<div class="servicio col-lg-4 col-md-6 wow fadeInUp" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+			<div class="box-servicio"> 
+				<a class="btn-cotiza">
+					<div class="img-servicio col-md-12">
+						<div class="icon"> <img width="100" height="100" class="img-responsive" src="https://img.icons8.com/clouds/100/statistics.png" alt="statistics"/></div>
+					</div>     
+				</a>
+				<div class="texto col-md-12 text-center">
+					<div class="titulo-tres"><h3>Ánalisis de campaña</h3></div>
+						<p>Mide el rendimiento y optimiza tus estrategias de campaña.</p>
+						<form method="post" action="">
+							{% csrf_token %}
+
+							<div class="form-group">
+								<input type="number" name="cantidad" min="1" max="1" class="form-control" placeholder="Cantidad" value="1" hidden>
+								<input name="tipo" value="Servicio"  hidden>
+							</div>
+							<button type="submit" class="btn btn-cotiza fadeIn btnserv">Crear</button>
+						</form>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+
+
+</section>
+</main>
+</div>
+{% endblock %}
