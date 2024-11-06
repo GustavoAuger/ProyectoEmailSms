@@ -5,6 +5,7 @@ def custom_context(request):
 
     if 'cliente_id' in request.session:
         cliente_id = request.session['cliente_id']
+
         response = requests.get(f'https://apismsemail-production.up.railway.app/list_users', params={'id': cliente_id})
         print(cliente_id)
         if response.status_code == 200:
@@ -14,6 +15,7 @@ def custom_context(request):
             context['cliente'] = data
             print(context['cliente'])
             print(data)
+
         else:
             context['is_authenticated'] = False
             context['cliente'] = None

@@ -6,11 +6,19 @@ from django.contrib.auth import authenticate
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
+from django.http import JsonResponse
+from django.contrib.contenttypes.models import ContentType
+
+import json   #para leer json
+#parte para finalizar la compra
+
 #para enviar correos
 from django.contrib import messages
 import random #para generar numeros random
 import string
+
 import requests
+
 
 # Create your views here.
 def index(request):
@@ -21,6 +29,7 @@ def contacto(request):
 
 def metricas(request):
     return render(request, 'myapp/metricas.html')
+
 
 def campanas(request):
     return render(request, 'myapp/campanas.html')
@@ -54,6 +63,7 @@ def login_vista(request):
         correo = request.POST.get('correo')
         contrasena = request.POST.get('contrasena')
 
+
         if not correo or not contrasena:
             messages.error(request, 'Por favor ingrese ambos campos.')
             return redirect('index')
@@ -81,6 +91,7 @@ def login_vista(request):
             print("error")
             return redirect('index')
     return render(request, 'perfil')
+
 
 def logout_vista(request):
     try:
