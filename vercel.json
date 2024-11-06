@@ -24,7 +24,5 @@
       "ENV": "PRODUCTION"
     }
   },
-  "hooks": {
-    "build": "python manage.py migrate --noinput"
-  }
+  "buildCommand": "python3 manage.py migrate && python3 manage.py collectstatic --noinput"
 }
