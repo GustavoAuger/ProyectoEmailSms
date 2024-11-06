@@ -69,14 +69,18 @@ WSGI_APPLICATION = 'VercelDeploy.wsgi.app'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join('/tmp', 'db.sqlite3'),  # Cambia la ubicación a /tmp
+        'NAME': os.path.join('/tmp', 'db.sqlite3'),  # Ruta temporal para Vercel
     }
 }
+
+# Configurar la base de datos para sesiones también en /tmp
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_FILE_PATH = '/tmp'  # Usar el mismo directorio temporal
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
