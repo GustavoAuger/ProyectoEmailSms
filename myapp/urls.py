@@ -9,7 +9,7 @@ urlpatterns = [
 ]
 
 urlpatterns = [
-
+    path('', views.index, name='index'),  # Ruta para la URL raíz
     path('index', views.index, name='index'),
     path('base', views.base, name='base'),
     path('contacto', views.contacto, name='contacto'),
