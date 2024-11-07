@@ -19,6 +19,6 @@ urlpatterns = [
     path('servicios', views.servicios_vista, name='servicios'), #renderizar los items de servicios en ciclo tomando la funcion
     path('procesar-seleccion-campana', views.procesar_seleccion_campana, name='procesar_seleccion_campana'),
     path('crear_campana', views.crear_campana, name='crear_campana'),
-    path('campanas', views.mostrar_campana, name='campanas')
+    path('mostrar_campana', views.mostrar_campana, name='mostrar_campana')
 
 ] 

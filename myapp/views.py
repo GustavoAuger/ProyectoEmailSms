@@ -88,15 +88,35 @@ def procesar_seleccion_campana(request):
         campana_id = request.POST.get("campana_id")
         if campana_id:
             # Datos que se envían a la API externa
-            data = {"campana_id": campana_id}
-            
+            data = {
+                    "email_data": [
+                        {
+                            "email": "carl.hidalgo@duocuc.cl",
+                            "fono": "+56956424045",
+                            "id_destinatario": 2,
+                            "nombre_destinatario": "Carlos Hidalgo\r\n"
+                        },
+                        {
+                            "email": "it.inocencio@duocuc.cl",
+                            "fono": "+56979527537",
+                            "id_destinatario": 3,
+                            "nombre_destinatario": "Italo Inocencio"
+                        },
+                        {
+                            "email": "gauger.gac@gmail.com",
+                            "fono": "+56990044068",
+                            "id_destinatario": 1,
+                            "nombre_destinatario": "Gustavo Auger"
+                        }
+                    ]
+                    }          
             try:
                 # Realizar la solicitud POST a la API externa
-                response = requests.post("http://localhost:5000/add_campaigns", json=data)
+                response = requests.post("https://apismsemail-production.up.railway.app/send_campaign_emails", json=data)
                 
                 # Verificar si la solicitud fue exitosa
                 if response.status_code == 200:
-                    return JsonResponse({"mensaje": f"Campaña seleccionada: {campana_id}"})
+                    return render(request, 'myapp/index.html')
                 else:
                     return JsonResponse({"error": "Error al enviar los datos a la API externa"}, status=500)
             except requests.exceptions.RequestException as e:
@@ -107,21 +127,29 @@ def procesar_seleccion_campana(request):
 
 #MOSTRAR CAMPANA
 
+
+
 def mostrar_campana(request):
-    # Llama a la API para obtener las campañas
+    # Define los valores de los parámetros para la solicitud GET
     user_id = 1
-    canal = "email"
-    url = f'https://apismsemail-production.up.railway.app/list_campaigns_by_id?id={user_id}&canal={canal}'
-    
-    # Realizar la solicitud GET a la API con los parámetros
-    response = requests.get(url)
+    canal = 2  # Aquí colocas el número correspondiente al canal; en este caso, 1 para "email"
+
+    # Llama a la API con método GET y pasando los parámetros en la URL
+    response = requests.get('https://apismsemail-production.up.railway.app/list_campaigns_by_id', params={
+        'user_id': user_id, 
+        'canal': canal
+    })
+
     if response.status_code == 200:
         campanas = response.json()  # Aquí obtienes las campañas desde la API
+        print(campanas)
     else:
         campanas = []  # En caso de error, mostrar una lista vacía
+        print("Error al obtener las campañas")
     
     # Renderiza la plantilla 'campana.html' con las campañas
-    return render(request, 'campana.html', {'campanas': campanas})
+    return render(request, 'myapp/campanas.html', {'campanas': campanas})
+
 
 #CREAR CAMPANA
 
@@ -133,17 +161,18 @@ def crear_campana(request):
         if tipo_campana and descripcion:
             # Datos que se enviarán a la API
             data = {
-                "tipo_campana": tipo_campana,
-                "descripcion": descripcion
+                "nombre_campana": descripcion,
+                "canal":2,
+                "user_id":1,
+                "template": tipo_campana,
             }
-            
             try:
                 # Realizar la solicitud POST a la API externa
-                response = requests.post("http://localhost:5000/add_campaigns", json=data)
+                response = requests.post("https://apismsemail-production.up.railway.app/add_campaigns", json=data)
                 
                 # Verificar si la solicitud fue exitosa
                 if response.status_code == 200:
-                    return JsonResponse({"mensaje": "Campaña creada exitosamente"})
+                    return render(request, 'myapp/servicios.html')
                 else:
                     return JsonResponse({"error": "Error al enviar los datos a la API externa"}, status=500)
             except requests.exceptions.RequestException as e:

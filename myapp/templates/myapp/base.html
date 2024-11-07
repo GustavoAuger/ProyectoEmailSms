@@ -35,7 +35,7 @@
                 <li class="nav-item colorletrasb"><a class="nav-link" data-scroll href="{% url 'index' %}" id="inicio"><i class="bi bi-send-arrow-up"></i> Inicio</a></li>
                 <li class="nav-item colorletrasb"><a class="nav-link" data-scroll href="{% url 'servicios' %}" id="servicios"><i class="bi bi-inboxes-fill"></i></i> Servicios</a></li>
                 <li class="nav-item colorletrasb"><a class="nav-link" data-scroll href="{% url 'metricas' %}" id="metricas"><i class="bi bi-graph-up-arrow"></i> Métricas</a></li>
-                <li class="nav-item colorletrasb"><a class="nav-link" data-scroll href="{% url 'campanas' %}" id="productos"><i class="bi bi-box-seam-fill"></i> Campañas</a></li>
+                <li class="nav-item colorletrasb"><a class="nav-link" data-scroll href="{% url 'mostrar_campana' %}" id="productos"><i class="bi bi-box-seam-fill"></i> Campañas</a></li>
                 <li class="nav-item colorletrasb"><a class="nav-link" data-scroll href="{% url 'contacto' %}" id="contacto"><i class="bi bi-chat-text"></i> Contacto</a></li>
                 <div class="mx-5">
                   <form class="d-flex">
@@ -48,7 +48,7 @@
               {% if is_authenticated %}
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="bi bi-person-circle"></i> {{ cliente.cliente_name }}
+                  {% for cont in cliente %}<i class="bi bi-person-circle"></i> {{ cont.cliente_name }} {% endfor %}
               </button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{% url 'perfil' %}">Ir al perfil</a></li>
@@ -121,7 +121,7 @@
                       <select class="form-select" id="campana-select" name="campana_id" required>
                           <option value="">Selecciona una campaña</option>
                           {% for campana in campanas %}
-                              <option value="{{ campana.id }}">{{ campana.nombre }}</option>
+                              <option value="{{ campana.id }}">{{ campana.nombre_campana }}</option>
                           {% endfor %}
                       </select>
                   </div>
