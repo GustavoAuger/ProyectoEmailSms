@@ -86,9 +86,9 @@
         <div class="mb-3">
           <label for="tipo_campana" class="form-label">Tipo de Campaña:</label>
           <select name="tipo_campana" class="form-select" required>
-            <option value="movil">Servicio Móvil</option>
-            <option value="tv_hogar">Servicio TV Hogar</option>
-            <option value="internet_hogar">Servicio Internet Hogar</option>
+            <option value="1">Servicio Móvil</option>
+            <option value="2">Servicio TV Hogar</option>
+            <option value="3">Servicio Internet Hogar</option>
           </select>
         </div>
         <div class="mb-3">
@@ -121,7 +121,7 @@
                       <select class="form-select" id="campana-select" name="campana_id" required>
                           <option value="">Selecciona una campaña</option>
                           {% for campana in campanas %}
-                              <option value="{{ campana.id }}">{{ campana.nombre_campana }}</option>
+                              <option value="{{ campana.id_campana }}">{{ campana.nombre_campana }}</option>
                           {% endfor %}
                       </select>
                   </div>

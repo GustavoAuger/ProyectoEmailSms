@@ -85,35 +85,17 @@ def logout_vista(request):
 #LLAMA A LA API PARA ENVIAR CAMPAÑA 
 def procesar_seleccion_campana(request):
     if request.method == "POST":
-        campana_id = request.POST.get("campana_id")
+        campana_id = request.POST.get('campana_id')
+        print(campana_id)
         if campana_id:
             # Datos que se envían a la API externa
             data = {
-                    "email_data": [
-                        {
-                            "email": "carl.hidalgo@duocuc.cl",
-                            "fono": "+56956424045",
-                            "id_destinatario": 2,
-                            "nombre_destinatario": "Carlos Hidalgo\r\n"
-                        },
-                        {
-                            "email": "it.inocencio@duocuc.cl",
-                            "fono": "+56979527537",
-                            "id_destinatario": 3,
-                            "nombre_destinatario": "Italo Inocencio"
-                        },
-                        {
-                            "email": "gauger.gac@gmail.com",
-                            "fono": "+56990044068",
-                            "id_destinatario": 1,
-                            "nombre_destinatario": "Gustavo Auger"
-                        }
-                    ]
-                    }          
+                'id_campana': 4
+            }       
             try:
                 # Realizar la solicitud POST a la API externa
-                response = requests.post("https://apismsemail-production.up.railway.app/send_campaign_emails", json=data)
-                
+                response = requests.post('https://apismsemail-production.up.railway.app/send-email', params=data)
+
                 # Verificar si la solicitud fue exitosa
                 if response.status_code == 200:
                     return render(request, 'myapp/index.html')
@@ -125,14 +107,14 @@ def procesar_seleccion_campana(request):
     
     return JsonResponse({"error": "No se seleccionó ninguna campaña"}, status=400)
 
-#MOSTRAR CAMPANA
+#MOSTRAR CAMPANA EMAIL
 
 
 
 def mostrar_campana(request):
     # Define los valores de los parámetros para la solicitud GET
     user_id = 1
-    canal = 2  # Aquí colocas el número correspondiente al canal; en este caso, 1 para "email"
+    canal = 2  #en este caso, 2 para "email"
 
     # Llama a la API con método GET y pasando los parámetros en la URL
     response = requests.get('https://apismsemail-production.up.railway.app/list_campaigns_by_id', params={
@@ -157,14 +139,20 @@ def crear_campana(request):
     if request.method == "POST":
         tipo_campana = request.POST.get("tipo_campana")
         descripcion = request.POST.get("descripcion")
-        
+        #según eleccion de template
+        if tipo_campana == 1:
+            template = "Descubre nuestras ofertas en planes móviles. Disfruta de llamadas, mensajes y datos ilimitados. ¡Elige el plan que mejor se ajuste a tu estilo de vida y mantente siempre conectado!"
+        elif tipo_campana ==2:
+            template = "Con nuestro servicio de TV Hogar, accede a una amplia selección de canales, series y películas para toda la familia. Contrata ahora y lleva el mejor entretenimiento a tu hogar."   
+        else:
+            template = "Experimenta la velocidad y estabilidad de nuestro servicio de Internet Hogar. Ideal para streaming, juegos y teletrabajo. ¡Conéctate con la mejor tecnología de navegación para tu hogar!"
         if tipo_campana and descripcion:
             # Datos que se enviarán a la API
             data = {
                 "nombre_campana": descripcion,
                 "canal":2,
                 "user_id":1,
-                "template": tipo_campana,
+                "template": template,
             }
             try:
                 # Realizar la solicitud POST a la API externa
