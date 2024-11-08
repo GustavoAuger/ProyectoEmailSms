@@ -71,42 +71,55 @@ Añade la configuración nginx
 
 2. **Copiar y pega código:**
 
-## Definición del grupo de servidores de backend con instancias Waitress
+## Definir el grupo de servidores Waitress para balanceo de carga:
+
 upstream django_servers {
-    least_conn;  # Método de balanceo de carga: distribuye al servidor con menos conexiones activas
-    server 127.0.0.1:8000;  # Instancia Waitress 1
-    server 127.0.0.1:8001;  # Instancia Waitress 2
-    # Añadir más servidores si es necesario
+    # Método de balanceo de carga (least_conn: menos conexiones activas)
+    least_conn;
+    server 127.0.0.1:8000;  # Primera instancia de Waitress
+    server 127.0.0.1:8001;  # Segunda instancia de Waitress
+    # Añade más servidores si es necesario
 }
+
+-- PREVIAMENTE se debe ejecutar las instnacias de Wairtress en la terminal:
+
+start waitress-serve --listen=127.0.0.1:8001 myapp:app
+start waitress-serve --listen=127.0.0.1:8002 myapp:app
+... # Añade más servidores si es necesario
 
 ## Configuración del servidor Nginx
 
 server {
-    listen 80;  # Escuchar en el puerto 80 para HTTP
-    server_name midominio.com;  # Cambiar 'midominio.com' por el dominio o IP
+    listen 80;  # Puerto de escucha en HTTP
+    server_name midominio.com;  # Cambia a tu dominio o IP
 
     # Configuración de caché
-    proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=1g inactive=60m use_temp_path=off;
+    proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=cache_django:10m max_size=1g inactive=60m use_temp_path=off;
 
-    # Proxy inverso y configuración de caché para balanceo de carga entre Waitress
+    # Configuración de proxy inverso y caché
     location / {
-        proxy_pass http://django_servers;  # Redirecciona al grupo de servidores Django
-        proxy_cache my_cache;              # Activa la caché para esta ubicación
-        proxy_cache_valid 200 1h;          # Caché de 1 hora para respuestas exitosas
-        proxy_cache_bypass $cookie_nocache $arg_nocache$arg_comment;
+        # Balanceo de carga a través del grupo django_servers
+        proxy_pass http://django_servers;
 
-        # Encabezados adicionales para el proxy inverso
+        # Configuración de caché
+        proxy_cache cache_django;           # Zona de caché
+        proxy_cache_valid 200 1h;           # Cacheo de 1 hora para respuestas 200 (éxito)
+        proxy_cache_use_stale error timeout updating;
+        proxy_cache_bypass $http_cache_control;
+
+        # Headers para el proxy inverso
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 
-    # Configuración para servir archivos estáticos de Django
+    # Configuración para archivos estáticos de Django
     location /static/ {
-        alias /ruta/a/static/files;  # Cambiar por la ruta a los archivos estáticos de Django
+        alias /ruta/a/static/files;  # Cambia por la ruta real a los archivos estáticos
     }
 }
+
 
 3. **Cambia /ruta/a/staticfiles/ por la ruta real de tus archivos estáticos en Django. Recolecta previamente estos archivos con python manage.py collectstatic.**
 
