@@ -82,6 +82,7 @@ upstream django_servers {
     # Añade más servidores si es necesario
 }
 
+
 -PREVIAMENTE se debe ejecutar las instnacias de Wairtress en la terminal:
 
 ## Primera instancia de Waitress en el puerto 8001
