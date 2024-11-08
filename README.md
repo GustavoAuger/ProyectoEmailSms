@@ -70,20 +70,41 @@ Localiza nginx.conf en el directorio de instalación o crea un archivo .conf en 
 Añade la configuración nginx
 
 2. **Copiar y pega código:**
-server {
-    listen 80;
-    server_name localhost;  # Cambia localhost por tu dominio si aplica
 
+## Definición del grupo de servidores de backend con instancias Waitress
+upstream django_servers {
+    least_conn;  # Método de balanceo de carga: distribuye al servidor con menos conexiones activas
+    server 127.0.0.1:8000;  # Instancia Waitress 1
+    server 127.0.0.1:8001;  # Instancia Waitress 2
+    # Añadir más servidores si es necesario
+}
+
+## Configuración del servidor Nginx
+
+server {
+    listen 80;  # Escuchar en el puerto 80 para HTTP
+    server_name midominio.com;  # Cambiar 'midominio.com' por el dominio o IP
+
+    # Configuración de caché
+    proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=1g inactive=60m use_temp_path=off;
+
+    # Proxy inverso y configuración de caché para balanceo de carga entre Waitress
     location / {
-        proxy_pass http://127.0.0.1:8000;  # Redirige a Waitress
+        proxy_pass http://django_servers;  # Redirecciona al grupo de servidores Django
+        proxy_cache my_cache;              # Activa la caché para esta ubicación
+        proxy_cache_valid 200 1h;          # Caché de 1 hora para respuestas exitosas
+        proxy_cache_bypass $cookie_nocache $arg_nocache$arg_comment;
+
+        # Encabezados adicionales para el proxy inverso
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 
+    # Configuración para servir archivos estáticos de Django
     location /static/ {
-        alias /ruta/a/staticfiles/;  # Cambia con la ruta a tus archivos estáticos
+        alias /ruta/a/static/files;  # Cambiar por la ruta a los archivos estáticos de Django
     }
 }
 
