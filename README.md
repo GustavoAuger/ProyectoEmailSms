@@ -71,22 +71,29 @@ Añade la configuración nginx
 
 2. **Copiar y pega código:**
 
--Definir el grupo de servidores Waitress para balanceo de carga - Método de balanceo de carga (least_conn: menos conexiones activas) -:
+Configuración de Nginx para balanceo de carga con Waitress
+Definir el grupo de servidores Waitress para balanceo de carga:
+Método de balanceo de carga: least_conn (menos conexiones activas).
 
 upstream django_servers {
     least_conn;
-    server 127.0.0.1:8000;  # Primera instancia de Waitress
-    server 127.0.0.1:8001;  # Segunda instancia de Waitress
+    server 127.0.0.1:8001;  # Primera instancia de Waitress
+    server 127.0.0.1:8002;  # Segunda instancia de Waitress
     # Añade más servidores si es necesario
 }
 
 -PREVIAMENTE se debe ejecutar las instnacias de Wairtress en la terminal:
 
+# Primera instancia de Waitress en el puerto 8001
 start waitress-serve --listen=127.0.0.1:8001 myapp:app
-start waitress-serve --listen=127.0.0.1:8002 myapp:app
-... # Añade más servidores si es necesario
 
-## Configuración del servidor Nginx
+# Segunda instancia de Waitress en el puerto 8002
+start waitress-serve --listen=127.0.0.1:8002 myapp:app
+
+# Añade más instancias si es necesario, especificando puertos diferentes
+
+
+#Configuración del servidor Nginx
 
 server {
     listen 80;  # Puerto de escucha en HTTP
