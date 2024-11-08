@@ -71,7 +71,7 @@ Añade la configuración nginx
 
 2. **Copiar y pega código:**
 
-#Configuración de Nginx para balanceo de carga con Waitress
+Configuración de Nginx para balanceo de carga con Waitress.
 Definir el grupo de servidores Waitress para balanceo de carga:
 Método de balanceo de carga: least_conn (menos conexiones activas).
 
